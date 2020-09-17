@@ -1,0 +1,55 @@
+{
+  "name": "trusecurity_phonegap",
+  "version": "1.0.0",
+  "description": "> [Framework7](http://www.idangero.us/framework7) is a Mobile UI framework that can be used to build hybrid apps with PhoneGap. This template allows you to get started using Framework7 \r   quickly.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-cordova-android": "echo \"Building Android\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dkb37023/TruSecurity_PhoneGap.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dkb37023/TruSecurity_PhoneGap/issues"
+  },
+  "homepage": "https://github.com/dkb37023/TruSecurity_PhoneGap#readme",
+  "devDependencies": {
+    "cordova-android": "^9.0.0",
+    "cordova-ios": "^6.1.1",
+    "cordova-plugin-file-transfer": "1",
+    "cordova-plugin-statusbar": "~1.0.1",
+    "cordova-plugin-whitelist": "1"
+  },
+  "dependencies": {},
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-battery-status": {},
+      "cordova-plugin-camera": {},
+      "cordova-plugin-media-capture": {},
+      "cordova-plugin-console": {},
+      "cordova-plugin-contacts": {},
+      "cordova-plugin-device": {},
+      "cordova-plugin-device-motion": {},
+      "cordova-plugin-device-orientation": {},
+      "cordova-plugin-dialogs": {},
+      "cordova-plugin-geolocation": {},
+      "cordova-plugin-globalization": {},
+      "cordova-plugin-inappbrowser": {},
+      "cordova-plugin-media": {},
+      "cordova-plugin-network-information": {},
+      "cordova-plugin-splashscreen": {},
+      "cordova-plugin-vibration": {},
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-file-transfer": {},
+      "cordova-plugin-statusbar": {}
+    },
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  }
+}

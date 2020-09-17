@@ -1,0 +1,171 @@
+<div class="page" data-name="about"  data-page="about">
+    <div class="navbar">
+        <div class="navbar-inner sliding">
+            <div class="left">
+                <a href="#" class="link back">
+                    <i class="icon icon-back"></i>
+                    <span class="ios-only">Back</span>
+                </a>
+            </div>
+            <div class="title">My Profile</div>
+        </div>
+    </div>
+    <div class="toolbar tabbar">
+        <div class="toolbar-inner">
+            <a href="#tab-Profile" class="tab-link tab-link-active">Profile</a>
+            <a href="#tab-License" class="tab-link">License / Qualification</a>
+        </div>
+    </div>
+    <div class="tabs-animated-wrap">
+        <div class="tabs">
+            <div id="tab-Profile" class="page-content tab tab-active myprofiletab1230">
+                <div class="block">
+                    <form class="list" id="my_profile_Form">
+                        <ul>
+                            <li>
+                                <div class="item-content item-input">
+                                    <div class="item-inner">
+                                        <div class="item-title item-label">First Name</div>
+                                        <div class="item-input-wrap">
+                                            <input type="text" name="first_name" placeholder="First name" id="profile_first_name">
+                                            <input type="hidden" name="id" id="profile_id">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content item-input">
+                                    <div class="item-inner">
+                                        <div class="item-title item-label">Last Name</div>
+                                        <div class="item-input-wrap">
+                                            <input type="text" name="last_name" placeholder="Last name" id="profile_last_name">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content item-input">
+                                    <div class="item-inner">
+                                        <div class="item-title item-label">Mobile</div>
+                                        <div class="item-input-wrap">
+                                            <input type="text" name="mobile" placeholder="Your Mobile" id="profile_mobile">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content item-input">
+                                    <div class="item-inner">
+                                        <div class="item-title item-label">E-mail</div>
+                                        <div class="item-input-wrap">
+                                            <input type="email" name="email" placeholder="E-mail" id="profile_email">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </form>
+                    <div class="block block-strong row">
+                        <div class="col"><a class="button button-fill" id="submit-profile-data">Update</a></div>
+                    </div>
+
+                </div>
+            </div>
+            <div id="tab-License" class="page-content tab">
+                <div class="block">
+
+                    <div class="block-title"><a class="popup-open col button button-small button-outline" href="#" data-popup=".popup-uploadLic">Add License</a></div>
+                    <div class="list media-list">
+                        <ul id="LicenseListingAll">
+
+                        </ul>
+                    </div>
+
+
+
+                    <div class="popup popup-uploadLic" style="overflow: auto;">
+
+                        <div class="login-screen-title"><center style='font-size:16px;color:#999999;'>Add License</center></div>
+                        <form  id="form968354" class="list">
+                            <ul>
+                                <li>
+                                    <div class="item-content item-input">
+                                        <div class="item-inner">
+                                            <div class="item-title item-label">License / Qualification:</div>
+                                            <div class="item-input-wrap">
+                                                <select name="file_label_type" id="file_label_type">
+                                                    <option value="1" selected="selected">License</option>
+                                                    <option value="2">Qualification</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content item-input">
+                                        <div class="item-inner">
+                                            <div class="item-title item-label">Category:</div>
+                                            <div class="item-input-wrap">
+                                                <select name="license_category_id" class="input-sm" id="license_category_id" required="required">
+                                                   
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content item-input">
+                                        <div class="item-inner">
+                                            <div class="item-title item-label">License Number:</div>
+                                            <div class="item-input-wrap">
+                                                <input type="text" placeholder="License Number" name="licence_no" id="licence_no">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content item-input">
+                                        <div class="item-inner">
+                                            <div class="item-title item-label">Expiry Date:</div>
+                                            <div class="item-input-wrap">
+                                                <input type="text" placeholder="Expiry Date" readonly="readonly" name="lic_expiry_date"  id="lic_expiry_date" class="calenderPicker">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content item-input">
+                                        <div class="item-inner">
+                                            <div class="item-title item-label">Never expire:</div>
+                                            <div class="item-input-wrap">
+                                                <input type="checkbox" name="doc_expiry_date_escape" class="doc_expiry_date_escape" value="1" id="doc_expiry_date_escape">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="item-content item-input">
+                                        <div class="item-inner">
+                                            <div class="item-input-wrap">
+                                                <div style="margin:0 auto; width:30%!important;text-align: center;">
+                                                    <img src="img/cam2.jpg" id='largeImage' style="width: 100px; height: 100px;">
+                                                </div><br/>
+                                                <button id='but_select' type="button">Select License</button>
+                                                <input type="hidden" name="myupload_img" id="myupload_img">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </form>
+                        <div class="block block-strong row">
+                            <button class="col button button-fill color-blue" id="upLic989">Submit</button>
+                            <button class="col button button-fill color-gray popup-close">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
