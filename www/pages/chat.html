@@ -1,0 +1,42 @@
+<div class="page" data-name="chat"  data-page="chat">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="left">
+                <a href="#" class="link back">
+                    <i class="icon icon-back"></i>
+                    <span class="ios-only">Back</span>
+                </a>
+            </div>
+            <div class="title">Messages</div>
+            <div class="list" id="selectAdminArea" style="display: none;">
+                
+                <ul>
+                    <li>
+                        <a class="item-link smart-select smart-select-init">
+                            <select name="admins" id="navAdmins"></select>
+                            <div class="item-content">
+                                <div class="item-inner" id="selectedADmin">
+                                    <div class="item-title">Admin</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="toolbar messagebar">
+        <div class="toolbar-inner">
+            <div class="messagebar-area">
+                <textarea class="resizable" placeholder="Message" id="messageTxt"></textarea>
+            </div><a class="link send-link" href="#">Send</a>
+        </div>
+    </div>
+    <div class="page-content messages-content">
+
+        <div class="messages"></div>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+<div class="page" data-name="apply_leave"  data-page="apply_leave">
+    <div class="navbar">
+        <div class="navbar-inner sliding">
+            <div class="left">
+                <a href="#" class="link back">
+                    <i class="icon icon-back"></i>
+                    <span class="ios-only">Back</span>
+                </a>
+            </div>
+            <div class="title">Applied Leave </div>
+        </div>
+    </div>
+    <div class="page-content">
+        <div class="block-title"><a class="popup-open col button button-small button-outline" href="#" data-popup=".popup-ApplyLeave">Apply Leave</a></div>
+        <div class="block">
+
+            <div class="list accordion-list">
+                <ul id="userShowAllLeave">
+
+                </ul>
+            </div>
+            <div class="popup popup-ApplyLeave">
+
+                <div class="login-screen-title"><center style='font-size:16px;color:#999999;'>Apply Leave</center></div>
+                <form  id="form968354" class="list">
+                    <ul>
+                        <li>
+                            <div class="item-content item-input">
+                                <div class="item-inner">
+                                    <div class="item-title item-label">From Date</div>
+                                    <div class="item-input-wrap">
+                                        <input type="text" placeholder="Select From Date" readonly="readonly" name="on_date" id="from-date-calendar-frm"  class="calenderPicker">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content item-input">
+                                <div class="item-inner">
+                                    <div class="item-title item-label">To Date</div>
+                                    <div class="item-input-wrap">
+                                        <input type="text" placeholder="Select To Date" readonly="readonly" name="to_date"  id="to-date-calendar-frm"  class="calenderPicker">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content item-input">
+                                <div class="item-inner">
+                                    <div class="item-title item-label">Reason</div>
+                                    <div class="item-input-wrap">
+                                        <textarea id="leave_reason" class="resizable" placeholder="Type Reason Here.." name="reason"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </form>
+                <div class="block block-strong row">
+                    <button class="col button button-fill color-blue" id="applyLeave789456">Submit</button>
+                    <button class="col button button-fill color-gray popup-close">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

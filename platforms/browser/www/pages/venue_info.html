@@ -1,0 +1,84 @@
+
+<div class="page" data-page="venue_info"  data-name="venue_info">
+    <div class="navbar">
+        <div class="navbar-inner sliding">
+            <div class="left">
+                <a href="#" class="link back">
+                    <i class="icon icon-back"></i>
+                    <span class="ios-only">Back</span>
+                </a>
+            </div>
+            <div class="title">Venue Details</div>
+        </div>
+    </div>
+    <div class="page-content">
+        <style>
+            .hidden-div{
+                display: none;
+            }
+        </style>
+        <div class="card"  id="attendanceDiv">
+            <div class="card-header">Attendance <span id="mytimeCounter1"></span></div>
+            <div class="card-content card-content-padding" id="stafftimeArea">
+
+                <div class="block" style="padding: 20px;">
+                    <div class="hidden-div" id="stafftimeAreaLinksError" >
+
+                    </div>
+                    <div class="row" id="stafftimeAreaLinks">
+                        <div class="col-45" id="checkInDiv">
+                            <button type="button" id="checkIn" class="item-link list-button stafftime-in-button button button-fill">Check In</button>
+                            <div id="checkInShow">--:--</div>
+                        </div>
+                        <div class="col-45"  id="checkOutDiv">
+                            <button type="button"  id="checkOut" class="item-link list-button stafftime-out-button button button-fill">Check Out</button>
+                            <div id="checkOutShow">--:--</div>                            
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="card" id="preAttendanceDiv">
+            <div class="card-header">Attendance <span id="mytimeCounter1"></span></div>
+            <div class="card-content card-content-padding" id="stafftimeArea">
+
+                <div class="block" style="padding: 20px;">
+                    <div class="hidden-div" id="stafftimeAreaLinksError" >
+
+                    </div>
+                    <div class="row" id="stafftimeAreaLinks">
+                        <div class="col-45" id="checkInDiv">
+                            <div id="precheckInShow">--:--</div>
+                        </div>
+                        <div class="col-45"  id="checkOutDiv">
+                             <div id="precheckOutShow">--:--</div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <!--<div class="card">
+            <div class="card-header">Venue Details</div>
+            <div class="card-content card-content-padding" id="venueDetailArea">
+
+            </div>
+        </div>-->
+        <div class="card">
+            <div class="card-header">Venue Address</div>
+            <div class="card-content card-content-padding" id="venueAddressArea">
+
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">Venue Guideline</div>
+            <div class="card-content card-content-padding" id="venueGuidelineArea">
+
+            </div>
+        </div>
+    </div>
+</div>
