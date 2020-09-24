@@ -13,9 +13,6 @@
     "cordova-plugin-camera": {
       "PACKAGE_NAME": "com.phonegap.tru007"
     },
-    "cordova-plugin-console": {
-      "PACKAGE_NAME": "com.phonegap.tru007"
-    },
     "cordova-plugin-contacts": {
       "PACKAGE_NAME": "com.phonegap.tru007"
     },
