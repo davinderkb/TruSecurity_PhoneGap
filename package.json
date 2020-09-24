@@ -19,13 +19,12 @@
   "homepage": "https://github.com/dkb37023/TruSecurity_PhoneGap#readme",
   "devDependencies": {
     "cordova-android": "^9.0.0",
+    "cordova-ios": "^4.4.0",
     "cordova-plugin-file-transfer": "1",
     "cordova-plugin-statusbar": "~1.0.1",
     "cordova-plugin-whitelist": "1"
   },
-  "dependencies": {
-    "cordova-ios": "^4.5.5"
-  },
+  "dependencies": {},
   "cordova": {
     "plugins": {
       "cordova-plugin-battery-status": {},

@@ -17,23 +17,20 @@
        under the License.
 */
 
-const fs = require('fs-extra');
-const path = require('path');
-const util = require('util');
-const events = require('cordova-common').events;
-const CordovaError = require('cordova-common').CordovaError;
+var fs = require('fs'),
+    path = require('path'),
+    util = require('util'),
+    events = require('cordova-common').events,
+    CordovaError = require('cordova-common').CordovaError;
 
 PodsJson.FILENAME = 'pods.json';
-PodsJson.LIBRARY = 'libraries';
-PodsJson.SOURCE = 'sources';
-PodsJson.DECLARATION = 'declarations';
 
-function PodsJson (podsJsonPath) {
+function PodsJson(podsJsonPath) {
     this.path = podsJsonPath;
     this.contents = null;
     this.__dirty = false;
 
-    const filename = this.path.split(path.sep).pop();
+    var filename = this.path.split(path.sep).pop();
     if (filename !== PodsJson.FILENAME) {
         throw new CordovaError(util.format('PodsJson: The file at %s is not `%s`.', this.path, PodsJson.FILENAME));
     }
@@ -44,92 +41,36 @@ function PodsJson (podsJsonPath) {
         this.clear();
         this.write();
     } else {
-        events.emit('verbose', 'pods.json found in platforms/ios');
+        events.emit('verbose', 'pods.json found in platforms/ios');  
         // load contents
-        const contents = fs.readFileSync(this.path, 'utf8');
-        this.contents = JSON.parse(contents);
+        this.contents = fs.readFileSync(this.path, 'utf8');
+        this.contents = JSON.parse(this.contents);
     }
-    this.__updateFormatIfNecessary();
 }
 
-PodsJson.prototype.__isOldFormat = function () {
-    if (this.contents !== null) {
-        if (this.contents.declarations === undefined ||
-            this.contents.sources === undefined ||
-            this.contents.libraries === undefined) {
-            return true;
-        }
-    }
-    return false;
+PodsJson.prototype.get = function(name) {
+    return this.contents[name];
 };
 
-PodsJson.prototype.__updateFormatIfNecessary = function () {
-    if (this.__isOldFormat()) {
-        this.contents = {
-            declarations: {},
-            sources: {},
-            libraries: this.contents
-        };
+PodsJson.prototype.remove = function(name) {
+    if (this.contents[name]) {
+        delete this.contents[name];
         this.__dirty = true;
-        events.emit('verbose', 'Update format of pods.json');
+        events.emit('verbose', util.format('Remove from pods.json for `%s`', name));
     }
 };
 
-PodsJson.prototype.getLibraries = function () {
-    return this.contents[PodsJson.LIBRARY];
-};
-
-PodsJson.prototype.__get = function (kind, name) {
-    return this.contents[kind][name];
-};
-
-PodsJson.prototype.getLibrary = function (name) {
-    return this.__get(PodsJson.LIBRARY, name);
-};
-
-PodsJson.prototype.getSource = function (name) {
-    return this.__get(PodsJson.SOURCE, name);
-};
-
-PodsJson.prototype.getDeclaration = function (name) {
-    return this.__get(PodsJson.DECLARATION, name);
-};
-
-PodsJson.prototype.__remove = function (kind, name) {
-    if (this.contents[kind][name]) {
-        delete this.contents[kind][name];
-        this.__dirty = true;
-        events.emit('verbose', util.format('Remove from pods.json for `%s` - `%s`', name));
-    }
-};
-
-PodsJson.prototype.removeLibrary = function (name) {
-    this.__remove(PodsJson.LIBRARY, name);
-};
-
-PodsJson.prototype.removeSource = function (name) {
-    this.__remove(PodsJson.SOURCE, name);
-};
-
-PodsJson.prototype.removeDeclaration = function (name) {
-    this.__remove(PodsJson.DECLARATION, name);
-};
-
-PodsJson.prototype.clear = function () {
-    this.contents = {
-        declarations: {},
-        sources: {},
-        libraries: {}
-    };
+PodsJson.prototype.clear = function() {
+    this.contents = {};
     this.__dirty = true;
 };
 
-PodsJson.prototype.destroy = function () {
+PodsJson.prototype.destroy = function() {
     fs.unlinkSync(this.path);
     events.emit('verbose', util.format('Deleted `%s`', this.path));
 };
 
-PodsJson.prototype.write = function () {
+PodsJson.prototype.write = function() {
     if (this.contents) {
         fs.writeFileSync(this.path, JSON.stringify(this.contents, null, 4));
         this.__dirty = false;
@@ -137,72 +78,37 @@ PodsJson.prototype.write = function () {
     }
 };
 
-PodsJson.prototype.__increment = function (kind, name) {
-    const val = this.__get(kind, name);
+PodsJson.prototype.set = function(name, type, spec, count) {
+    this.setJson(name, { name: name, type: type, spec: spec, count: count });
+};
+
+PodsJson.prototype.increment = function(name) {
+    var val = this.get(name);
     if (val) {
         val.count++;
+        this.setJson(val);
     }
 };
 
-PodsJson.prototype.incrementLibrary = function (name) {
-    this.__increment(PodsJson.LIBRARY, name);
-};
-
-PodsJson.prototype.incrementSource = function (name) {
-    this.__increment(PodsJson.SOURCE, name);
-};
-
-PodsJson.prototype.incrementDeclaration = function (name) {
-    this.__increment(PodsJson.DECLARATION, name);
-};
-
-PodsJson.prototype.__decrement = function (kind, name) {
-    const val = this.__get(kind, name);
+PodsJson.prototype.decrement = function(name) {
+    var val = this.get(name);
     if (val) {
         val.count--;
         if (val.count <= 0) {
-            this.__remove(kind, name);
+            this.remove(name);
+        } else {
+            this.setJson(val);
         }
     }
 };
 
-PodsJson.prototype.decrementLibrary = function (name) {
-    this.__decrement(PodsJson.LIBRARY, name);
-};
-
-PodsJson.prototype.decrementSource = function (name) {
-    this.__decrement(PodsJson.SOURCE, name);
-};
-
-PodsJson.prototype.decrementDeclaration = function (name) {
-    this.__decrement(PodsJson.DECLARATION, name);
-};
-
-PodsJson.prototype.__setJson = function (kind, name, json) {
-    this.contents[kind][name] = Object.assign({}, json);
+PodsJson.prototype.setJson = function(name, json) {
+    this.contents[name] = json;
     this.__dirty = true;
-    events.emit('verbose', util.format('Set pods.json for `%s` - `%s`', kind, name));
+    events.emit('verbose', util.format('Set pods.json for `%s`', name));
 };
 
-// sample json for library
-// { name: "Eureka", spec: "4.2.0", "swift-version": "4.1", count: 1 }
-PodsJson.prototype.setJsonLibrary = function (name, json) {
-    this.__setJson(PodsJson.LIBRARY, name, json);
-};
-
-// sample json for source
-// { source: "https://github.com/brightcove/BrightcoveSpecs.git", count: 1 }
-PodsJson.prototype.setJsonSource = function (name, json) {
-    this.__setJson(PodsJson.SOURCE, name, json);
-};
-
-// sample json for declaration
-// { declaration: ""}
-PodsJson.prototype.setJsonDeclaration = function (name, json) {
-    this.__setJson(PodsJson.DECLARATION, name, json);
-};
-
-PodsJson.prototype.isDirty = function () {
+PodsJson.prototype.isDirty = function() {
     return this.__dirty;
 };
 
